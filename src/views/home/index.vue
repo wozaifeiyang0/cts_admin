@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
+    <h1>欢迎使用系统</h1>
   </div>
 </template>
 

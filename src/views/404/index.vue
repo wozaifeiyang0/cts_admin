@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
+    <h1>错误界面</h1>
   </div>
 </template>
 
