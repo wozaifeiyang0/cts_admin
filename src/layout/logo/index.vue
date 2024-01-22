@@ -1,19 +1,18 @@
 <template>
   <div class="logo" v-if="!setting.logo_hide">
-    <img :src="setting.logo_path" alt="" v-if="!setting.logo_img_hide"/>
-    <p v-if="!setting.logo_title_hide">{{setting.title}}</p>
+    <img :src="setting.logo_path" alt="" v-if="!setting.logo_img_hide" />
+    <p v-if="!setting.logo_title_hide">{{ setting.title }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import setting from "@/setting";
+import setting from '@/setting'
 </script>
 
 <style scoped lang="scss">
-
 .logo {
   width: 100%;
-  heigth: $base_layout_slider_logo_width; 
+  heigth: $base_layout_slider_logo_width;
   color: white;
   display: flex;
   align-items: center;
@@ -27,5 +26,4 @@ import setting from "@/setting";
     margin-left: 10px;
   }
 }
-
 </style>
