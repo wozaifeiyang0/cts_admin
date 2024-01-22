@@ -5,11 +5,15 @@ import { reqLogin } from '@/api/user'
 // 引入用户数据类型
 import type { loginFormData } from '@/api/user/type'
 
+import { GET_TOKEN, SET_TOKEN } from '@/utils/token'
+
+import { UserState } from './types/type'
+
 let useUserStore = defineStore('User', {
   //数据存储
-  state: () => {
+  state: (): UserState => {
     return {
-      token: localStorage.getItem('TOKEN'), // 用户唯一标识token
+      token: GET_TOKEN(), // 用户唯一标识token
     }
   },
   actions: {
@@ -20,7 +24,7 @@ let useUserStore = defineStore('User', {
         // 用户仓库赋值
         this.token = result.data.token
         // 本地存储持久化
-        localStorage.setItem('TOKEN', result.data.token)
+        SET_TOKEN(result.data.token)
         return 'ok'
       } else {
         return Promise.reject(new Error(result.data.message))

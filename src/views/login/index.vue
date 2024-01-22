@@ -3,16 +3,21 @@
     <el-row>
       <el-col :span="12" :xs="0">一</el-col>
       <el-col :span="12" :xs="24">
-        <el-form class="login_form">
+        <el-form
+          class="login_form"
+          :model="loginForm"
+          :rules="rules"
+          ref="ruleFormRef"
+        >
           <h1>Hello</h1>
           <h2>欢迎来到甄选</h2>
-          <el-form-item>
+          <el-form-item prop="username">
             <el-input
               :prefix-icon="User"
               v-model="loginForm.username"
             ></el-input>
           </el-form-item>
-          <el-form-item>
+          <el-form-item prop="password">
             <el-input
               type="password"
               :prefix-icon="Lock"
@@ -42,20 +47,56 @@ import { User, Lock } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 import useUserStore from '@/store/modules/user'
 import { useRouter } from 'vue-router'
-import { ElNotification } from 'element-plus'
-
+import { ElNotification, FormInstance } from 'element-plus'
+import { getTime } from '@/utils/time'
 // 定义是否加载变量
 let loading = ref(false)
 // 获取路由器
 const router = useRouter()
-
 // 用户仓库
 let useStore = useUserStore()
 // 收集用户和密码数据
 let loginForm = reactive({ username: 'admin', password: '111111' })
+// form表单引用
+const ruleFormRef = ref<FormInstance>()
+// 自定义username字段校验
+const validatorUsername = (rule: any, value: any, callback: any) => {
+  if (value.length > 4) {
+    callback()
+  } else {
+    callback(new Error('用户名长度不能少于5位'))
+  }
+}
+// 自定义password字段校验
+const validatorPassword = (rule: any, value: any, callback: any) => {
+  if (value.length > 5) {
+    callback()
+  } else {
+    callback(new Error('密码长度不能少于6位'))
+  }
+}
+// 表单规则对象
+const rules = reactive({
+  username: [{ validator: validatorUsername, trigger: 'change' }],
+  password: [{ validator: validatorPassword, trigger: 'change' }],
+})
 
 // 登录函数
 const login = async () => {
+  // 表单验证
+  await ruleFormRef.value.validate((valid, fields) => {
+    // 判断是否验证通过
+    if (!valid) {
+      // 显示登录失败提示信息
+      ElNotification({
+        type: 'error',
+        message: fields[0][0].message,
+      })
+      return
+    }
+  })
+
+  // 登录是否成功
   loading.value = true
   try {
     await useStore.userLogin(loginForm)
@@ -65,6 +106,7 @@ const login = async () => {
     ElNotification({
       type: 'success',
       message: '登录成功',
+      title: `Hi，${getTime()}好`,
     })
   } catch (error: Error) {
     // 显示登录失败提示信息

@@ -23,6 +23,6 @@ app.use(gloalComponent)
 app.use(router)
 
 //安装仓库
-app.use(pinia);
+app.use(pinia)
 
 app.mount('#app')
