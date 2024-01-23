@@ -6,7 +6,11 @@
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
         <!--  菜单组件 -->
-        <el-menu :default-active="$route.path" background-color="#363636" text-color="white">
+        <el-menu
+          :default-active="$route.path"
+          background-color="#363636"
+          text-color="white"
+        >
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
@@ -29,7 +33,7 @@ import Main from '@/layout/main/index.vue'
 import Tabber from '@/layout/tabber/index.vue'
 // 获取用户菜单数据
 import useUserStore from '@/store/modules/user'
-import { useRoute } from "vue-router";
+import { useRoute } from 'vue-router'
 
 let userStore = useUserStore()
 const $route = useRoute()
