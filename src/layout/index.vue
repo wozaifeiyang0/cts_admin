@@ -10,11 +10,12 @@
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
-      <!--  -->
+      <!-- 工具栏区 -->
     </div>
     <div class="layout_tabber">456</div>
+      <!-- 展示区  -->
     <div class="layout_main">
-      <router-view></router-view>
+      <Main></Main>
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@
 <script setup lang="ts">
 import Logo from '@/layout/logo/index.vue'
 import Menu from '@/layout/menu/index.vue'
+import Main from '@/layout/main/index.vue'
 // 获取用户菜单数据
 import useUserStore from '@/store/modules/user'
 
