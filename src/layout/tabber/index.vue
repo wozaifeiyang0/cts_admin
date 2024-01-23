@@ -27,7 +27,7 @@ import Setting from './setting/index.vue'
   }
   .tabber_right {
     align-items: center;
-    display: flex; 
+    display: flex;
   }
 }
 </style>
