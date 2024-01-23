@@ -8,18 +8,23 @@
 <script setup lang="ts">
 import setting from '@/setting'
 </script>
+<script lang="ts">
+export default {
+  name: 'Logo',
+}
+</script>
 
 <style scoped lang="scss">
 .logo {
   width: 100%;
-  heigth: $base_layout_slider_logo_width;
+  height: $base_layout_slider_logo_height;
   color: white;
   display: flex;
   align-items: center;
   padding: 20px;
   img {
     width: 40px;
-    heigth: 40px;
+    height: 40px;
   }
   p {
     font-size: $base_layout_slider_logo_title_font_size;

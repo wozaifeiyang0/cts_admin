@@ -1,28 +1,49 @@
 <template>
   <div class="layout_container">
     <div class="layout_slider">
-      <logo></logo>
+      <Logo></Logo>
+      <!-- 展示菜单 -->
+      <!-- 滚动组件 -->
+      <el-scrollbar class="scrollbar">
+        <!--  菜单组件 -->
+        <el-menu background-color="#363636" text-color="white">
+          <Menu :menuList="userStore.menuRoutes"></Menu>
+        </el-menu>
+      </el-scrollbar>
+      <!--  -->
     </div>
     <div class="layout_tabber">456</div>
-    <div class="layout_main">789</div>
+    <div class="layout_main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import logo from '@/layout/logo/index.vue'
+import Logo from '@/layout/logo/index.vue'
+import Menu from '@/layout/menu/index.vue'
+// 获取用户菜单数据
+import useUserStore from '@/store/modules/user'
+
+let userStore = useUserStore()
 </script>
 
 <style scoped lang="scss">
 .layout_container {
   width: 100%;
   height: 100vh;
-
   .layout_slider {
     width: $base_layout_slider_width;
     background: $base_layout_slider_background;
     height: 100vh;
+    .scrollbar {
+      width: 100%;
+      height: calc(100vh - $base_layout_slider_logo_height);
+      .el-menu {
+        border-right: 0px;
+      }
+    }
   }
-
   .layout_tabber {
     position: fixed;
     width: calc(100% - $base_layout_slider_width);
@@ -31,7 +52,6 @@ import logo from '@/layout/logo/index.vue'
     top: 0px;
     left: $base_layout_slider_width;
   }
-
   .layout_main {
     position: absolute;
     width: calc(100% - $base_layout_slider_width);
