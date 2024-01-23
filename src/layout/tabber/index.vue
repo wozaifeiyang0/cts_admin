@@ -15,7 +15,7 @@ import Setting from './setting/index.vue'
 </script>
 <script lang="ts">
 export default {
-  name:'Tabber'
+  name: 'Tabber',
 }
 </script>
 

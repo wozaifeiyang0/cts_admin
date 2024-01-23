@@ -1,6 +1,9 @@
 <template>
   <div class="layout_container">
-    <div class="layout_slider" :class="{fold:layoutSettingStore.fold ? true : false}">
+    <div
+      class="layout_slider"
+      :class="{ fold: layoutSettingStore.fold ? true : false }"
+    >
       <Logo :hiddenTitle="layoutSettingStore.fold ? true : false"></Logo>
       <!-- 展示菜单 -->
       <!-- 滚动组件 -->
@@ -17,11 +20,17 @@
       </el-scrollbar>
       <!-- 工具栏区 -->
     </div>
-    <div class="layout_tabber" :class="{fold:layoutSettingStore.fold ? true : false}">
+    <div
+      class="layout_tabber"
+      :class="{ fold: layoutSettingStore.fold ? true : false }"
+    >
       <Tabber></Tabber>
     </div>
     <!-- 展示区  -->
-    <div class="layout_main" :class="{fold:layoutSettingStore.fold ? true : false}">
+    <div
+      class="layout_main"
+      :class="{ fold: layoutSettingStore.fold ? true : false }"
+    >
       <Main></Main>
     </div>
   </div>
@@ -33,20 +42,20 @@ import Menu from '@/layout/menu/index.vue'
 import Main from '@/layout/main/index.vue'
 import Tabber from '@/layout/tabber/index.vue'
 // 获取setting数据仓库
-import  useLayoutSettingStore  from "@/store/modules/setting";
+import useLayoutSettingStore from '@/store/modules/setting'
 // 获取用户菜单数据
 import useUserStore from '@/store/modules/user'
 import { useRoute } from 'vue-router'
 // 用户仓库实例
 let userStore = useUserStore()
 // layout 仓库实例
-let layoutSettingStore = useLayoutSettingStore();
+let layoutSettingStore = useLayoutSettingStore()
 
 const $route = useRoute()
 </script>
 <script lang="ts">
 export default {
-  name:'Layout'
+  name: 'Layout',
 }
 </script>
 
@@ -59,7 +68,7 @@ export default {
     background: $base_layout_slider_background;
     height: 100vh;
     transition: all 0.3s;
-    
+
     .scrollbar {
       width: 100%;
       height: calc(100vh - $base_layout_slider_logo_height);
