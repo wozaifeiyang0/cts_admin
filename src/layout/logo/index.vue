@@ -1,12 +1,13 @@
 <template>
   <div class="logo" v-if="!setting.logo_hide">
     <img :src="setting.logo_path" alt="" v-if="!setting.logo_img_hide" />
-    <p v-if="!setting.logo_title_hide">{{ setting.title }}</p>
+    <p v-if="!setting.logo_title_hide && !hiddenTitle">{{ setting.title }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import setting from '@/setting'
+defineProps(['hiddenTitle'])
 </script>
 <script lang="ts">
 export default {

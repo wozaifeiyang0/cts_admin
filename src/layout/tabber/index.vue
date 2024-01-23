@@ -13,6 +13,11 @@
 import Breadcrumb from './breadcrumb/index.vue'
 import Setting from './setting/index.vue'
 </script>
+<script lang="ts">
+export default {
+  name:'Tabber'
+}
+</script>
 
 <style scoped lang="scss">
 .tabber_container {
