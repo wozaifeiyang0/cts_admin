@@ -19,7 +19,7 @@ let flag = ref(true)
 watch(
   () => layoutSettingStore.refresh,
   () => {
-    flag.value = false;
+    flag.value = false
     nextTick(() => {
       flag.value = true
     })
