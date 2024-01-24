@@ -15,7 +15,7 @@ export const constantRoute = [
     component: () => import('@/layout/index.vue'),
     name: 'layout',
     meta: {
-      title: 'layout',
+      title: '',
       icon: 'HomeFilled',
     },
     redirect: '/home',
@@ -43,6 +43,7 @@ export const constantRoute = [
     path: '/manage',
     component: () => import('@/layout/index.vue'),
     name: 'manage',
+    redirect: '/manage/user',
     meta: {
       title: '系统管理',
       hidden: false,
