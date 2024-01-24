@@ -1,6 +1,6 @@
 <template>
   <el-button icon="Refresh" circle size="small" @click="changeRefresh" />
-  <el-button icon="FullScreen" circle size="small" @click="" />
+  <el-button icon="FullScreen" circle size="small" @click="fullScreen" />
   <el-button icon="Setting" circle size="small" @click="" />
   <img src="../../../../public/logo.png" />
   <el-dropdown>
@@ -20,9 +20,20 @@
 import useLayoutSettingStore from '@/store/modules/setting'
 // setting 仓库
 let layoutSetting = useLayoutSettingStore()
-
+// 刷新方法
 const changeRefresh = () => {
   layoutSetting.refresh = !layoutSetting.refresh
+}
+
+// 切换全屏方法
+const fullScreen = () => {
+  let full = document.fullscreenElement
+  // 判断是否全屏状态
+  if (!full) {
+    document.documentElement.requestFullscreen()
+  } else {
+    document.exitFullscreen()
+  }
 }
 </script>
 <script lang="ts">
