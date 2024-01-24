@@ -11,7 +11,7 @@
       :to="item.path"
     >
       <!-- 图标 -->
-      <el-icon style="margin:5px 5px">
+      <el-icon style="margin: 5px 5px">
         <component :is="item.meta.icon"></component>
       </el-icon>
       <span>{{ item.meta.title }}</span>
